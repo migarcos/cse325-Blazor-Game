@@ -19,10 +19,15 @@
             </span>
         }
     </div>
+    @for (var i = 0; i < 42; i++)
+    {
+       <span class="@pieces[i]"></span>
+    }
 </div>
 
 
 @code {
+    private string[] pieces = new string[42];
     protected override void OnInitialized()
     {
         State.ResetBoard();
