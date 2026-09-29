@@ -2,17 +2,20 @@
 
 <HeadContent>
     <style>
-        :root {
-            --board-bg: yellow;  /** the color of the board **/
-            --player1: red;      /** Player 1's piece color **/
-            --player2: blue;     /** Player 2's piece color **/
-        }
+            :root {
+                --board-bg: yellow;
+                /** the color of the board **/
+                --player1: red;
+                /** Player 1's piece color **/
+                --player2: blue;
+                /** Player 2's piece color **/
+            }
     </style>
 </HeadContent>
 
 <div>
     <div class="board">
-        @for (var i= 0; i < 42; i++)
+        @for (var i = 0; i < 42; i++)
         {
             <span class="container">
                 <span></span>
@@ -21,13 +24,21 @@
     </div>
     @for (var i = 0; i < 42; i++)
     {
-       <span class="@pieces[i]"></span>
+        <span class="@pieces[i]"></span>
     }
 </div>
 
 
 @code {
     private string[] pieces = new string[42];
+
+    private void PlayPiece(byte col)
+    {
+        var player = State.PlayerTurn;
+        var turn = State.CurrentTurn;
+        var landingRow = State.PlayPiece(col);
+        pieces[turn] = $"player{player} col{col} drop{landingRow}";
+    }
     protected override void OnInitialized()
     {
         State.ResetBoard();
