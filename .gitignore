@@ -1,1 +1,7 @@
-/bin
+bin/
+obj/
+
+.vscode/
+
+wwwwroot/dist/
+
