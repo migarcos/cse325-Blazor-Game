@@ -1,7 +1,7 @@
 # Build a Connect Four game with Blazor
+In this game, two players alternate taking turns placing a game piece (typically a checker) in the top of the board. Game pieces fall to the lowest row of a column and the player that places four game pieces to make a line horizontally, vertically, or diagonally wins.
 
-
- Some of the skills we learned:
+**Skills learned**:
 
 - Created a component
 - Added that component to our home page
@@ -42,3 +42,7 @@ Namespace Mapping
 - Subfolders (like Components/) should extend the namespace (ConnectFour.Components).
 
 - In Program.cs, you must using the correct namespace for each class you register with DI
+
+### Util Sites
+
+- [Learn Blazor](https://learn.microsoft.com/en-us/training/modules/dotnet-connect-four/)
