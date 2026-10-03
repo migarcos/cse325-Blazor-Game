@@ -3,58 +3,64 @@
 
 <HeadContent>
     <style>
-        :root {
-            --board-bg: @ColorTranslator.ToHtml(BoardColor);
-            --player1: @State.Player1Color;
-            --player2: @State.Player2Color;
-        }
+            :root {
+                --board-bg:
+                    @ColorTranslator.ToHtml(BoardColor)
+                ;
+            
+            }
     </style>
 </HeadContent>
 
-<nav>
-    @for (byte i = 0; i < 7; i++)
-    {
-        var col = i;
-        <span title="Click to play a piece" @onclick="() => PlayPiece(col)">🔽</span>
-    }
-</nav>
+<div class="game" style="--player1: @State.Player1Color; --player2: @State.Player2Color;">
+    <nav>
+        @for (byte i = 0; i < 7; i++)
+        {
+            var col = i;
+            <span title="Click to play a piece" @onclick="() => PlayPiece(col)">🔽</span>
+        }
+    </nav>
 
-<div class="player-settings">
-    <div class="player-color">
-        <label>Player 1 
-            <input type="color" id="Player1Color" @bind="State.Player1Color">
-        </label>
+    <div class="player-settings">
+        <div class="player-color">
+            <label>Player 1
+                <input type="color" id="Player1Color" @bind="State.Player1Color" @bind:event="oninput">
+            </label>
+        </div>
+
+        <div class="player-color">
+            <label>Player 2
+                <input type="color" id="Player2Color" @bind="State.Player2Color" @bind:event="oninput">
+            </label>
+        </div>
     </div>
 
-    <div class="player-color">
-        <label>Player 2 
-            <input type="color" id="Player2Color" @bind="State.Player2Color">
-        </label>
-    </div>
-</div>
-
-<article>
-    @winnerMessage <button style="@ResetStyle" @onclick="ResetGame">Reset the game</button>
-    <br />
-    <span class="alert-danger">@errorMessage</span>
-    <span class="alert-info">@CurrentTurn</span>
-</article>
+    <article>
+        @winnerMessage <button style="@ResetStyle" @onclick="ResetGame">Reset the game</button>
+        <br />
+        <span class="alert-danger">@errorMessage</span>
+        <span class="alert-info">@CurrentTurn</span>
+    </article>
 
 
-<div>
-    <div class="board">
+    <div>
+        <div class="board">
+            @for (var i = 0; i < 42; i++)
+            {
+                <span class="container">
+                    <span></span>
+                </span>
+            }
+        </div>
         @for (var i = 0; i < 42; i++)
         {
-            <span class="container">
-                <span></span>
-            </span>
+            <span class="@pieces[i]"></span>
         }
     </div>
-    @for (var i = 0; i < 42; i++)
-    {
-        <span class="@pieces[i]"></span>
-    }
+
 </div>
+
+
 
 
 @code {

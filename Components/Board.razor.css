@@ -143,6 +143,7 @@ span.container {
 }
 
 .player-settings {
+    margin: 1rem;
     display: flex;
     justify-content: center;
     gap: 2rem;
