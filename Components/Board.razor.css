@@ -142,6 +142,32 @@ span.container {
     animation-name: drop6
 }
 
+.player-settings {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.player-color {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.player-color label {
+    font-weight: 600;
+}
+
+.player-color input[type="color"] {
+    width: 48px;
+    height: 48px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+}
+
 @keyframes drop1 {
 
     100%,

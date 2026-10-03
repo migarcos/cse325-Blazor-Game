@@ -5,8 +5,8 @@
     <style>
         :root {
             --board-bg: @ColorTranslator.ToHtml(BoardColor);
-            --player1: @ColorTranslator.ToHtml(Player1Color);
-            --player2: @ColorTranslator.ToHtml(Player2Color);
+            --player1: @State.Player1Color;
+            --player2: @State.Player2Color;
         }
     </style>
 </HeadContent>
@@ -19,12 +19,27 @@
     }
 </nav>
 
+<div class="player-settings">
+    <div class="player-color">
+        <label>Player 1 
+            <input type="color" id="Player1Color" @bind="State.Player1Color">
+        </label>
+    </div>
+
+    <div class="player-color">
+        <label>Player 2 
+            <input type="color" id="Player2Color" @bind="State.Player2Color">
+        </label>
+    </div>
+</div>
+
 <article>
     @winnerMessage <button style="@ResetStyle" @onclick="ResetGame">Reset the game</button>
     <br />
     <span class="alert-danger">@errorMessage</span>
     <span class="alert-info">@CurrentTurn</span>
 </article>
+
 
 <div>
     <div class="board">
@@ -43,6 +58,8 @@
 
 
 @code {
+
+    
     private string[] pieces = new string[42];
     private string winnerMessage = string.Empty;
     private string errorMessage = string.Empty;
@@ -87,12 +104,6 @@
 
     [Parameter]
     public Color BoardColor { get; set; } = ColorTranslator.FromHtml("yellow");
-
-    [Parameter]
-    public Color Player1Color { get; set; } = ColorTranslator.FromHtml("red");
-
-    [Parameter]
-    public Color Player2Color { get; set; } = ColorTranslator.FromHtml("blue");
     protected override void OnInitialized()
     {
         State.ResetBoard();
