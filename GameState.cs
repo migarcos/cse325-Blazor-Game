@@ -2,6 +2,10 @@ namespace ConnectFour.Components;
 
 public class GameState
 {
+    
+    // Color to each player
+    public string Player1Color { get; set; } = "#86dc35";
+    public string Player2Color { get; set; } = "#fde50d";
 
     static GameState()
     {
